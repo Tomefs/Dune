@@ -3,7 +3,7 @@ import app from "./app.js"
 
 (async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/gitsetup')
+        await mongoose.connect('mongodb://localhost:27017/')
         console.log('Connected successfully to Mongo server')
 
         const onListening = () => {
