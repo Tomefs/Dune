@@ -1,0 +1,27 @@
+@font-face {
+    font-family: baiJamjuree;
+    src: url(data/fonts/BaiJamjuree-Regular.ttf);
+}
+
+@font-face {
+    font-family: anybodyEB;
+    src: url(data/fonts/Anybody-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: anybodyM;
+    src: url(data/fonts/Anybody-Medium.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition: all 0.4s;
+    color: #F8DFBF;
+    text-decoration: none;
+    font-family: baiJamjuree;
+    z-index: 3;
+    transition: 0.5s ease-in-out;
+}
