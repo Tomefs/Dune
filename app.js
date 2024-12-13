@@ -1,5 +1,10 @@
-import express from "express";
+let express = import("express");
+let fetch = import("node-fetch");
+let server = express();
+const PORT = 3000;
 
-const app = express();
+server.use(express.json());
 
-export default app
+server.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
