@@ -24,4 +24,54 @@
     font-family: baiJamjuree;
     z-index: 3;
     transition: 0.5s ease-in-out;
+    color: black;
+}
+
+nav{
+    width: 20%;
+    height: 100%;
+    background-color: whitesmoke;
+    position: fixed;
+    text-transform: uppercase;
+    justify-content: space-around;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+
+nav h1{
+    font-family: anybodyEB;
+    padding: 2rem 2rem 2rem 2rem;
+    font-size: 3rem;
+    text-align: center;
+}
+
+nav ul{
+    display: block;
+}
+
+nav ul li{
+    display: flex;
+    list-style-type: none;
+    padding: 0 2rem 0 2rem;
+    width: 100%;
+    align-items: center;
+}
+
+nav ul li:hover{
+    background-color: rgb(195, 195, 195);
+}
+
+nav ul li a{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+nav ul li a img{
+    width: 2rem;
+}
+
+nav ul li a p{
+    font-family: anybodyM;
+    padding: 0 0 0 1rem;
+    font-size: 1.5rem;
 }
