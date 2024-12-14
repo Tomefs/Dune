@@ -1,16 +1,16 @@
 @font-face {
     font-family: baiJamjuree;
-    src: url(data/fonts/BaiJamjuree-Regular.ttf);
+    src: url(fonts/BaiJamjuree-Regular.ttf);
 }
 
 @font-face {
     font-family: anybodyEB;
-    src: url(data/fonts/Anybody-ExtraBold.ttf);
+    src: url(fonts/Anybody-ExtraBold.ttf);
 }
 
 @font-face {
     font-family: anybodyM;
-    src: url(data/fonts/Anybody-Medium.ttf);
+    src: url(fonts/Anybody-Medium.ttf);
 }
 
 *{
