@@ -22,25 +22,55 @@
     color: #F8DFBF;
     text-decoration: none;
     font-family: baiJamjuree;
-    z-index: 3;
     transition: 0.5s ease-in-out;
     color: black;
 }
 
+.login{
+    position: fixed;
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    height: 5rem;
+    padding: 2rem;
+    z-index: 2;
+    background-color: whitesmoke;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    align-items: center;
+    text-align: center;
+}
+
+.login a{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50rem;
+    border: 0.1rem solid black;
+    overflow: hidden;
+}
+
+.login a img{
+    width: 2.5rem;
+    margin-top: 5px;
+}
+
+
+
 nav{
-    width: 20%;
+    top: 0;
+    width: 15rem;
     height: 100%;
     background-color: whitesmoke;
     position: fixed;
     text-transform: uppercase;
     justify-content: space-around;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    z-index: 3;
 }
 
 nav h1{
     font-family: anybodyEB;
-    padding: 2rem 2rem 2rem 2rem;
-    font-size: 3rem;
+    padding: 2rem;
+    font-size: 2.2rem;
     text-align: center;
 }
 
@@ -73,5 +103,5 @@ nav ul li a img{
 nav ul li a p{
     font-family: anybodyM;
     padding: 0 0 0 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
