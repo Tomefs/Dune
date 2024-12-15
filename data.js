@@ -28,9 +28,21 @@ let data = {
     {
       title: "Frank Herbert",
       body: [
-        "The author of this website is a passionate web developer.",
-        "They enjoy creating interactive and engaging web experiences.",
-        "Their goal is to make the web a better place for everyone.",
+        "Frank Herbert (1920-1986) was born in Tacoma, Washington,", 
+        "and studied at the University of Washington, Seattle. ",
+        "He had a wide variety of jobs before becaming a full time writer,",
+        "including TV cameraman, radio commentator, oyster diver, jungle survival",
+        "instructor, psychoanalyst, creative writing teacher, reporter, and editor",
+        "for several West Coast newspapers.",
+
+        "In 1952, Herbert began publishing science fiction with 'Looking for Something?'",
+        "in Startling Stories. However, his breakthrough as a major writer came in 1965 with",
+        "the publication of Dune, followed by five sequels: Dune Messiah, Children of Dune,",
+        "God Emperor of Dune, Heretics of Dune, and Chapterhouse: Dune.",
+
+        "The saga is considered as one of the most significant achievements in the genre, praised",
+        "for its complex world-building and exploration of ecological, political, and philosophical",
+        "themes.",
       ],
       image: "images/Frank-Herbert.webp",
     },
