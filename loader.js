@@ -65,14 +65,20 @@ function loadContent(key) {
   const descriptionElement = document.createElement("p");
   descriptionElement.textContent = body || "No content available.";
 
-  if (image) {
-    const imageElement = document.createElement("img");
-    imageElement.src = image;
-    imageElement.alt = title || "Image";
-    imageElement.style.maxWidth = "100%"; // Optional: Responsive styling
-    contentContainer.appendChild(imageElement);
+  if (image && image.length > 0) {
+    const imageContainer = document.createElement("div");
+    imageContainer.className = "image-container";
+
+    image.forEach((src) => {
+      const imgElement = document.createElement("img");
+      imgElement.src = src;
+      imgElement.alt = title;
+      imageContainer.appendChild(imgElement);
+    });
+
+    contentContainer.appendChild(imageContainer);
   }
-  
+
   contentContainer.appendChild(titleElement);
   contentContainer.appendChild(descriptionElement);
 }

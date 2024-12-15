@@ -20,7 +20,7 @@ let data = {
         "and its spice.",
       ],
 
-      image: "images/dunas.webp",
+      image: ["images/dunas.webp",]
     },
   ],
 
@@ -44,7 +44,22 @@ let data = {
         "for its complex world-building and exploration of ecological, political, and philosophical",
         "themes.",
       ],
-      image: "images/Frank-Herbert.webp",
+      image: ["images/Frank-Herbert.webp",]
+    },
+  ],
+  books: [
+    {
+      title: "Book Planner",
+      image: [
+        "images/cover1.webp",
+        "images/cover2.webp",
+        "images/cover3.webp",
+        "images/cover4.webp",
+        "images/cover5.webp",
+        "images/cover6.webp",
+      ],
+      body: [
+      ],
     },
   ],
 };
