@@ -26,10 +26,6 @@
     color: black;
 }
 
-header{
-    opacity: 0.1;
-}
-
 .login{
     position: fixed;
     display: flex;
@@ -111,4 +107,8 @@ nav ul li button p{
     font-family: anybodyM;
     padding: 0 0 0 1rem;
     font-size: 1.2rem;
+}
+
+main {
+    padding: 5rem 0 0 15rem;
 }

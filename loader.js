@@ -57,7 +57,7 @@ function loadContent(key) {
     return;
   }
 
-  const { title, body } = selectedData;
+  const { title, body, image } = selectedData;
 
   const titleElement = document.createElement("h1");
   titleElement.textContent = title;
@@ -65,6 +65,14 @@ function loadContent(key) {
   const descriptionElement = document.createElement("p");
   descriptionElement.textContent = body || "No content available.";
 
+  if (image) {
+    const imageElement = document.createElement("img");
+    imageElement.src = image;
+    imageElement.alt = title || "Image";
+    imageElement.style.maxWidth = "100%"; // Optional: Responsive styling
+    contentContainer.appendChild(imageElement);
+  }
+  
   contentContainer.appendChild(titleElement);
   contentContainer.appendChild(descriptionElement);
 }
