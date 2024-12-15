@@ -29,7 +29,7 @@ let loader = new ScriptLoader("data.js");
 
 document.querySelectorAll("button").forEach((button) => {
   button.onclick = () => {
-    const key = button.className.toLowerCase();
+    const key = button.className;
     loader
       .load()
       .then(() => loadContent(key))
@@ -40,7 +40,11 @@ document.querySelectorAll("button").forEach((button) => {
 function loadContent(key) {
   const sectionClass = key.charAt(0).toUpperCase() + key.slice(1);
 
-  const contentContainer = document.querySelector("section");
+  document.querySelectorAll("main > section").forEach((section) => {
+    section.innerHTML = "";
+  });
+
+  const contentContainer = document.querySelector(`.${sectionClass}`);
 
   if (!contentContainer) {
     console.error(`No section found for key: ${key}`);
@@ -52,8 +56,6 @@ function loadContent(key) {
     contentContainer.innerHTML = `<p>No data found for ${key}.</p>`;
     return;
   }
-
-  contentContainer.innerHTML = "";
 
   const { title, body } = selectedData;
 
