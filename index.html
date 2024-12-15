@@ -5,52 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="navbar.css" />
+    <script defer src="loader.js"></script>
   </head>
   <body>
     <header>
       <div class="login">
         <a href="">
-          <img src="icons/person.webp" alt="login">
+          <img src="icons/person.webp" alt="login" />
         </a>
       </div>
       <nav>
         <h1>Prophet</h1>
         <ul>
           <li>
-            <a href="#home">
-              <img src="icons/home.webp" alt="home"/>
+            <button class="HOME">
+              <img src="icons/home.webp" alt="home" />
               <p>Home</p>
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#author">
-              <img src="icons/pen-tool.webp" alt="author"/>
+            <button class="AUTHOR">
+              <img src="icons/pen-tool.webp" alt="author" />
               <p>Author</p>
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#books">
-              <img src="icons/book.webp" alt="books"/>
+            <button class="BOOKS">
+              <img src="icons/book.webp" alt="books" />
               <p>Books</p>
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#movies">
-              <img src="icons/movie.webp" alt="movies"/>
+            <button class="MOVIES">
+              <img src="icons/movie.webp" alt="movies" />
               <p>Movies</p>
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
     </header>
     <main>
-      <section id="home"></section>
+      <section class="Home"></section>
 
-      <section id="author"></section>
+      <section class="Author"></section>
+      
+      <section class="Books"></section>
 
-      <section id="books"></section>
-
-      <section id="movies"></section>
+      <section class="Movies"></section>
     </main>
   </body>
 </html>
