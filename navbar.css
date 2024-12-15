@@ -29,6 +29,7 @@
 header{
     opacity: 0.1;
 }
+
 .login{
     position: fixed;
     display: flex;
