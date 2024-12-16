@@ -1,0 +1,25 @@
+.Books{
+    padding: 2rem;
+}
+
+.Books h1{
+    font-family: anybodyEB;
+    padding: 1rem;
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+
+.Books .image-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Books img{
+    width: 16%;
+    height: 16%;
+}
+
+.Books img:hover{
+    scale: 105%;
+    cursor: pointer;
+}
