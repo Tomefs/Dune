@@ -2,24 +2,30 @@
     padding: 2rem;
 }
 
-.Books h1{
-    font-family: anybodyEB;
-    padding: 1rem;
-    font-size: 5rem;
-    text-transform: uppercase;
-}
-
 .Books .image-container{
     display: flex;
     justify-content: space-between;
 }
 
-.Books img{
+.Books .image-container img{
     width: 16%;
     height: 16%;
 }
 
-.Books img:hover{
+.Books .image-container img:hover{
     scale: 105%;
     cursor: pointer;
+}
+
+.Books h1{
+    font-family: anybodyEB;
+    padding: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.Books .image-sinopse{
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }

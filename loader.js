@@ -63,7 +63,7 @@ function loadContent(key) {
   titleElement.textContent = title;
 
   const descriptionElement = document.createElement("p");
-  descriptionElement.textContent = body || "No content available.";
+  descriptionElement.textContent = body;
 
   contentContainer.appendChild(titleElement);
   contentContainer.appendChild(descriptionElement);
@@ -77,14 +77,16 @@ function loadContent(key) {
       imgElement.src = src;
       imgElement.alt = title;
 
-      imgElement.addEventListener("click", () => displayImageInfo(title, sinopse, contentContainer));
+      imgElement.addEventListener("click", () =>
+        displayImageInfo(title, sinopse, contentContainer)
+      );
 
       imageContainer.appendChild(imgElement);
     });
 
     contentContainer.appendChild(imageContainer);
   }
-  
+
   function displayImageInfo(title, sinopse, container) {
     let imageTitle = container.querySelector(".image-title");
     if (!imageTitle) {
@@ -93,20 +95,19 @@ function loadContent(key) {
       container.appendChild(imageTitle);
     }
     imageTitle.textContent = title;
-  
+
     let imageSinopse = container.querySelector(".image-sinopse");
     if (!imageSinopse) {
       imageSinopse = document.createElement("div");
       imageSinopse.className = "image-sinopse";
       container.appendChild(imageSinopse);
     }
-  
-    imageSinopse.innerHTML = "";
-    sinopse.forEach((paragraph) => {
-      const paragraphElement = document.createElement("p");
-      paragraphElement.textContent = paragraph;
-      imageSinopse.appendChild(paragraphElement);
-    });
-  }
 
+    imageSinopse.innerHTML = "";
+
+    const combinedSinopse = sinopse.join(" ");
+    const paragraphElement = document.createElement("p");
+    paragraphElement.textContent = combinedSinopse;
+    imageSinopse.appendChild(paragraphElement);
+  }
 }
