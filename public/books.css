@@ -10,6 +10,7 @@
 .Books .image-container img{
     width: 16%;
     height: 16%;
+    border-radius: 2rem;
 }
 
 .Books .image-container img:hover{

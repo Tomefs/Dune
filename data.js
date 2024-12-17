@@ -22,7 +22,7 @@ let data = {
 
       image: [
         {
-          src: "images/dunas.webp",
+          src: "public/images/dunas.webp",
         },
       ],
     },
@@ -50,7 +50,7 @@ let data = {
       ],
       image: [
         {
-          src: "images/Frank-Herbert.webp",
+          src: "public/images/Frank-Herbert.webp",
         },
       ],
     },
@@ -60,7 +60,7 @@ let data = {
       title: "Book Planner",
       image: [
         {
-          src: "images/cover1.webp",
+          src: "public/images/cover1.webp",
           title: "Dune",
           sinopse: [
             "Dune tells the story of Paul Atreides, a brilliant ",
@@ -72,7 +72,7 @@ let data = {
           ],
         },
         {
-          src: "images/cover2.webp",
+          src: "public/images/cover2.webp",
           title: "Dune Messiah",
           sinopse: [
             "Dune Messiah continues the story of Paul Atreides, better known—and feared—as the man christened",
@@ -83,7 +83,7 @@ let data = {
           ],
         },
         {
-          src: "images/cover3.webp",
+          src: "public/images/cover3.webp",
           title: "Children of Dune",
           sinopse: [
             "The Children of Dune are twin siblings Leto and Ghanima Atreides, whose father, the Emperor",
@@ -94,7 +94,7 @@ let data = {
           ],
         },
         {
-          src: "images/cover4.webp",
+          src: "public/images/cover4.webp",
           title: "God Emperor of Dune",
           sinopse: [
             "3,500 years have passed since Paul Atreides became the messiah of the Fremen and the Emperor of ",
@@ -103,7 +103,7 @@ let data = {
           ],
         },
         {
-          src: "images/cover5.webp",
+          src: "public/images/cover5.webp",
           title: "Heretics of Dune",
           sinopse: [
             "Leto Atreides, the God Emperor of Dune, is dead. In the fifteen hundred years since his passing, ",
@@ -117,7 +117,7 @@ let data = {
           ],
         },
         {
-          src: "images/cover6.webp",
+          src: "public/images/cover6.webp",
           title: "Chapterhouse Dune",
           sinopse: [
             "The desert planet Arrakis, called Dune, has been destroyed. The remnants of the Old Empire have ",
