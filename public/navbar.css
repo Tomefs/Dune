@@ -26,6 +26,11 @@
     color: black;
 }
 
+
+header {
+    opacity: 0.3;
+}
+
 .login{
     position: fixed;
     display: flex;
