@@ -26,11 +26,6 @@
     color: black;
 }
 
-
-header {
-    opacity: 0.3;
-}
-
 .login{
     position: fixed;
     display: flex;
@@ -46,7 +41,7 @@ header {
     top: 0;
 }
 
-.login a{
+.login button{
     width: 3rem;
     height: 3rem;
     border-radius: 50rem;
@@ -54,11 +49,11 @@ header {
     overflow: hidden;
 }
 
-.login a:hover{
+.login button:hover{
     background-color: rgb(195, 195, 195);
 }
 
-.login a img{
+.login button img{
     width: 2.5rem;
     margin-top: 5px;
 }
@@ -91,7 +86,7 @@ nav ul li{
     list-style-type: none;
 }
 
-button{
+nav ul li button{
     display: flex;
     align-items: center;
     border: none;

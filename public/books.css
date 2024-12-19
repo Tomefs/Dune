@@ -5,27 +5,33 @@
 .Books .image-container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.Books .image-container img{
+.Books .book-container{
     width: 16%;
     height: 16%;
+}
+
+.Books .book-container img{
+    width: 100%;
+    height: 100%;
     border-radius: 2rem;
 }
 
-.Books .image-container img:hover{
+.Books .book-container img:hover{
     scale: 105%;
     cursor: pointer;
 }
 
 .Books h1{
-    font-family: anybodyEB;
-    padding: 1rem;
-    font-size: 2rem;
+    font-family: anybodyM;
+    font-size: 1rem;
     text-transform: uppercase;
+    padding: 0 0 1rem 1rem;
 }
 
-.Books .image-sinopse{
+.Books .book-info{
     padding: 1rem 2rem 1rem 2rem;
     border-radius: 2rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);

@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="styleshet" href="login.css"/>
+    <title>Dune</title>
+    <link rel="styleshet" href="login.css" />
     <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="home.css" />
     <link rel="stylesheet" href="books.css" />
-    <script defer src="loader.js"></script>
+    <script src="loader.js" defer></script>
   </head>
   <body>
     <!-- Página de Registo -->
@@ -17,8 +17,18 @@
       <div id="container-register-form" class="form-container">
         <h2>Sign up</h2>
         <form id="register-form">
-          <input type="text" id="register-username" placeholder="username" required>
-          <input type="password" id="register-password" placeholder="password" required>
+          <input
+            type="text"
+            id="register-username"
+            placeholder="username"
+            required
+          />
+          <input
+            type="password"
+            id="register-password"
+            placeholder="password"
+            required
+          />
           <button type="submit">Sign up</button>
         </form>
         <p>Already have an account? <a href="#" id="to-login">Log in</a></p>
@@ -30,8 +40,18 @@
       <div id="container-login-form" class="form-container hidden">
         <h2>Login</h2>
         <form id="login-form">
-          <input type="text" id="login-username" placeholder="username" required>
-          <input type="password" id="login-password" placeholder="password" required>
+          <input
+            type="text"
+            id="login-username"
+            placeholder="username"
+            required
+          />
+          <input
+            type="password"
+            id="login-password"
+            placeholder="password"
+            required
+          />
           <button type="submit">Login</button>
         </form>
         <p>Don't have an account?<a href="#" id="to-register"> Sign up</a></p>
@@ -41,9 +61,9 @@
     <header>
       <!-- Homepage -->
       <div class="login">
-        <a href="">
+        <button class="account">
           <img src="icons/person.webp" alt="login" />
-        </a>
+        </button>
       </div>
       <nav>
         <h1>Prophet</h1>

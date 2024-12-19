@@ -1,43 +1,49 @@
-class ScriptLoader {
-  constructor(script) {
-    this.script = script;
-    this.scriptElement = null;
-    this.head = document.querySelector("head");
-    this.isLoaded = false;
+class DataLoader {
+  constructor(url) {
+    this.url = url;
   }
 
-  load() {
-    return new Promise((resolve, reject) => {
-      if (this.isLoaded) {
-        resolve("Script already loaded");
-        return;
+  async load(key) {
+    try {
+      const response = await fetch(`${this.url}/${key}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch: ${response.statusText}`);
       }
 
-      this.scriptElement = document.createElement("script");
-      this.scriptElement.src = this.script;
-      this.scriptElement.onload = () => {
-        this.isLoaded = true;
-        resolve("Script loaded successfully");
-      };
-      this.scriptElement.onerror = (e) => reject(e);
-      this.head.appendChild(this.scriptElement);
-    });
+      const contentType = response.headers.get("Content-Type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await response.text();
+        console.error("Expected JSON, but got:", text);
+        throw new Error("Expected JSON, but got something else.");
+      }
+
+      const data = await response.json();
+      console.log(`Data received: ${JSON.stringify(data)}`);
+      return data;
+    } catch (error) {
+      console.error("Error in ScriptLoader.load:", error);
+      throw error;
+    }
   }
 }
 
-let loader = new ScriptLoader("data.js");
+let loader = new DataLoader("http://localhost:3002/getData");
 
 document.querySelectorAll("button").forEach((button) => {
-  button.onclick = () => {
+  button.onclick = async () => {
     const key = button.className;
-    loader
-      .load()
-      .then(() => loadContent(key))
-      .catch((e) => console.error(e));
+    try {
+      console.log(`Loading data for key: ${key}`);
+      const data = await loader.load(key);
+      console.log(`Data loaded: ${JSON.stringify(data)}`);
+      loadContent(key, data);
+    } catch (e) {
+      console.error("Failed to load data:", e);
+    }
   };
 });
 
-function loadContent(key) {
+function loadContent(key, data) {
   const sectionClass = key.charAt(0).toUpperCase() + key.slice(1);
 
   document.querySelectorAll("main > section").forEach((section) => {
@@ -51,63 +57,77 @@ function loadContent(key) {
     return;
   }
 
-  let selectedData = data[key]?.[0];
-  if (!selectedData) {
-    contentContainer.innerHTML = `<p>No data found for ${key}.</p>`;
-    return;
-  }
-
-  const { title, body, image } = selectedData;
-
-  const titleElement = document.createElement("h1");
-  titleElement.textContent = title;
-
-  const descriptionElement = document.createElement("p");
-  descriptionElement.textContent = body;
-
-  contentContainer.appendChild(titleElement);
-  contentContainer.appendChild(descriptionElement);
-
-  if (image && image.length > 0) {
+  if (key === "books") {
     const imageContainer = document.createElement("div");
     imageContainer.className = "image-container";
 
-    image.forEach(({ src, title, sinopse }) => {
-      const imgElement = document.createElement("img");
-      imgElement.src = src;
-      imgElement.alt = title;
+    data.image.forEach((book) => {
+      const { title, src, sinopse } = book;
 
-      imgElement.addEventListener("click", () =>
-        displayImageInfo(title, sinopse, contentContainer)
-      );
+      const bookContainer = document.createElement("div");
+      bookContainer.className = "book-container";
 
-      imageContainer.appendChild(imgElement);
+      const titleElement = document.createElement("h1");
+      titleElement.textContent = title;
+
+      const imageElement = document.createElement("img");
+      imageElement.src = src;
+      imageElement.alt = title;
+
+      imageElement.addEventListener("click", () => {
+        displayBookInfo(title, sinopse, contentContainer);
+      });
+
+      bookContainer.appendChild(titleElement);
+      bookContainer.appendChild(imageElement);
+
+      imageContainer.appendChild(bookContainer);
     });
-
     contentContainer.appendChild(imageContainer);
+  } else {
+    const { title, body, image } = data;
+
+    const titleElement = document.createElement("h1");
+    titleElement.textContent = title;
+
+    const descriptionElement = document.createElement("p");
+    descriptionElement.textContent = body.join(" ");
+
+    contentContainer.appendChild(titleElement);
+    contentContainer.appendChild(descriptionElement);
+
+    if (image && image.length > 0) {
+      const imageContainer = document.createElement("div");
+      imageContainer.className = "image-container";
+
+      image.forEach(({ src }) => {
+        const imgElement = document.createElement("img");
+        imgElement.src = src;
+
+        imageContainer.appendChild(imgElement);
+      });
+
+      contentContainer.appendChild(imageContainer);
+    }
+  }
+}
+
+function displayBookInfo(title, sinopse, container) {
+  let bookInfoContainer = container.querySelector(".book-info");
+  if (!bookInfoContainer) {
+    bookInfoContainer = document.createElement("div");
+    bookInfoContainer.className = "book-info";
+    container.appendChild(bookInfoContainer);
   }
 
-  function displayImageInfo(title, sinopse, container) {
-    let imageTitle = container.querySelector(".image-title");
-    if (!imageTitle) {
-      imageTitle = document.createElement("h1");
-      imageTitle.className = "image-title";
-      container.appendChild(imageTitle);
-    }
-    imageTitle.textContent = title;
+  bookInfoContainer.innerHTML = "";
 
-    let imageSinopse = container.querySelector(".image-sinopse");
-    if (!imageSinopse) {
-      imageSinopse = document.createElement("div");
-      imageSinopse.className = "image-sinopse";
-      container.appendChild(imageSinopse);
-    }
+  const titleElement = document.createElement("h2");
+  titleElement.textContent = title;
 
-    imageSinopse.innerHTML = "";
+  const sinopseElement = document.createElement("p");
+  sinopseElement.textContent = sinopse.join(" ");
 
-    const combinedSinopse = sinopse.join(" ");
-    const paragraphElement = document.createElement("p");
-    paragraphElement.textContent = combinedSinopse;
-    imageSinopse.appendChild(paragraphElement);
-  }
+  bookInfoContainer.appendChild(titleElement);
+  bookInfoContainer.appendChild(sinopseElement);
 }
