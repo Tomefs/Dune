@@ -1,0 +1,28 @@
+.Author h1{
+    font-family: anybodyEB;
+    padding: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.Author p{
+    font-family: "Bai Jamjuree", serif;
+    width: 50%;
+    margin-top: 10rem;
+}
+
+.Author{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Author .author-image{
+    width: 50%;
+    overflow: hidden;
+}
+
+.Author .author-image img{
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+}
