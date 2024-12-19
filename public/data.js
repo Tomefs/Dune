@@ -133,4 +133,39 @@ let data = {
       ],
     },
   ],
+  movies: [
+    {
+      title: "Movie Planner",
+      image: [
+        {
+          src: "images/dune1984.webp",
+          title: "Dune",
+          sinopse: [
+            "In 10,190 AD, a duke and his family are sent by the Emperor to Arrakis,",
+            "an arid planet known as Dune, which has a material essential for interplanetary travel: Spice.",
+            "The reason for this move is that the Emperor plans to destroy the duke and his family, but his", 
+            "son escapes and seeks revenge using the ecology of this world as one of his weapons.",
+          ],
+        },
+        {
+          src: "images/Dune.webp",
+          title: "Dune Part One",
+          sinopse: [
+            "Dune: Part One (2021) follows Paul Atreides, a young noble, as his family takes control of Arrakis,",
+            "the galaxy's only source of the valuable spice. Betrayal and war force Paul to confront his destiny", 
+            "among the planet’s native Fremen, while exploring themes of power and survival in a hostile desert world.",
+          ],
+        },
+        {
+          src: "images/dune2.webp",
+          title: "Dune Part Two",
+          sinopse: [
+            "Dune: Part Two (2024) continues Paul Atreides' journey as he allies with Chani and the Fremen to avenge his", 
+            "family's downfall. Facing a choice between his love for Chani and the fate of the universe,", 
+            "Paul endeavors to prevent a terrible future only he can foresee.",
+          ],
+        },
+      ],
+    },
+  ],
 };
