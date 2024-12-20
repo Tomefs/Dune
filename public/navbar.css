@@ -26,10 +26,6 @@
     color: black;
 }
 
-header{
-    opacity: 0.2;
-}
-
 .account{
     position: fixed;
     display: flex;
