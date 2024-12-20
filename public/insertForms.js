@@ -12,14 +12,14 @@ async function insertForms() {
     const loginForm = {
       key: "login",
       html: `
-        <div id="login-page" class="page">
+        <div class="login-page">
           <h2>Login</h2>
           <form id="login-form">
             <input type="text" id="login-username" placeholder="Username" required>
             <input type="password" id="login-password" placeholder="Password" required>
             <button type="submit" class="submit">Login</button>
           </form>
-          <p>Don't have an account? <a href="#" id="to-register">Sign up</a></p>
+          <p>Don't have an account? <button class="switch-form" data-target="register">register</button></p>
         </div>
       `,
     };
@@ -27,14 +27,14 @@ async function insertForms() {
     const registerForm = {
       key: "register",
       html: `
-        <div id="register-page" class="page hidden">
+        <div class="register-page">
           <h2>Sign up</h2>
           <form id="register-form">
             <input type="text" id="register-username" placeholder="Username" required>
             <input type="password" id="register-password" placeholder="Password" required>
             <button type="submit" class="submit">Sign up</button>
           </form>
-          <p>Already have an account? <a href="#" id="to-login">Log in</a></p>
+          <p>Already have an account? <button class="switch-form" data-target="login">login</button></p>
         </div>
       `,
     };

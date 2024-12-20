@@ -33,9 +33,6 @@ document.querySelector(".account").addEventListener("click", async () => {
   try {
     const data = await loader.load("login");
     document.querySelector(".register").innerHTML = data.html;
-    document.getElementById("login-page").classList.add("visible");
-    document.getElementById("register-page").classList.remove("visible");
-
     addSwitchEventListeners();
     addLoginEventListener();
   } catch (e) {
@@ -44,78 +41,79 @@ document.querySelector(".account").addEventListener("click", async () => {
 });
 
 function addSwitchEventListeners() {
-  document.getElementById("to-register").addEventListener("click", async (event) => {
-    event.preventDefault();
-    const registerData = await loader.load("register");
-    document.querySelector(".register").innerHTML = registerData.html;
-    document.getElementById("login-page").classList.remove("visible");
-    document.getElementById("register-page").classList.add("visible");
-    addSwitchEventListeners();
-    addRegisterEventListener();
-  });
-
-  document.getElementById("to-login").addEventListener("click", async (event) => {
-    event.preventDefault();
-    const loginData = await loader.load("login");
-    document.querySelector(".register").innerHTML = loginData.html;
-    document.getElementById("register-page").classList.remove("visible");
-    document.getElementById("login-page").classList.add("visible");
-    addSwitchEventListeners();
-    addLoginEventListener();
+  document.querySelector(".register").addEventListener("click", async (event) => {
+    if (event.target.classList.contains("switch-form")) {
+      event.preventDefault();
+      const targetForm = event.target.getAttribute("data-target");
+      const formData = await loader.load(targetForm);
+      document.querySelector(".register").innerHTML = formData.html;
+      addSwitchEventListeners();
+      if (targetForm === "login") {
+        addLoginEventListener();
+      } else {
+        addRegisterEventListener();
+      }
+    }
   });
 }
 
 function addLoginEventListener() {
-  document.getElementById("login-form").addEventListener("submit", async (event) => {
-    event.preventDefault();
+  const loginForm = document.getElementById("login-form");
+  if (loginForm) {
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-    const username = document.getElementById("login-username").value;
-    const password = document.getElementById("login-password").value;
+      const username = document.getElementById("login-username").value;
+      const password = document.getElementById("login-password").value;
 
-    const response = await fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        alert("Login successful");
+        showLogoutButton();
+      } else {
+        alert("Login failed");
+      }
     });
-
-    if (response.ok) {
-      alert("Login successful");
-      showLogoutButton();
-    } else {
-      alert("Login failed");
-    }
-  });
+  }
 }
 
 function addRegisterEventListener() {
-  document.getElementById("register-form").addEventListener("submit", async (event) => {
-    event.preventDefault();
+  const registerForm = document.getElementById("register-form");
+  if (registerForm) {
+    registerForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-    const username = document.getElementById("register-username").value;
-    const password = document.getElementById("register-password").value;
+      const username = document.getElementById("register-username").value;
+      const password = document.getElementById("register-password").value;
 
-    const response = await fetch("/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
+      const response = await fetch("/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        alert("Registration successful");
+        const loginData = await loader.load("login");
+        document.querySelector(".register").innerHTML = loginData.html;
+        document.getElementById("register-page").classList.remove("visible");
+        document.getElementById("login-page").classList.add("visible");
+        addSwitchEventListeners();
+        addLoginEventListener();
+      } else {
+        alert("Registration failed");
+      }
     });
-
-    if (response.ok) {
-      alert("Registration successful");
-      const loginData = await loader.load("login");
-      document.querySelector(".register").innerHTML = loginData.html;
-      document.getElementById("register-page").classList.remove("visible");
-      document.getElementById("login-page").classList.add("visible");
-      addSwitchEventListeners();
-      addLoginEventListener();
-    } else {
-      alert("Registration failed");
-    }
-  });
+  }
 }
 
 function showLogoutButton() {

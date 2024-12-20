@@ -58,6 +58,18 @@
     margin-top: 5px;
 }
 
+.account .logout{
+    margin:  0 0 0 1rem;
+    border-radius: 1rem;
+    width: 6rem;
+    height: 2rem;
+    text-align: center;
+}
+
+.account .logout p{
+    font-family: anybodyM;
+    font-size: 1.2rem;  
+}
 
 nav{
     top: 0;
