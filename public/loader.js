@@ -33,28 +33,99 @@ document.querySelector(".account").addEventListener("click", async () => {
   try {
     const data = await loader.load("login");
     document.querySelector(".register").innerHTML = data.html;
-    document.getElementById("login-page").classList.toggle("visible");
+    document.getElementById("login-page").classList.add("visible");
     document.getElementById("register-page").classList.remove("visible");
 
-    document.getElementById("to-register").addEventListener("click", async (event) => {
-      event.preventDefault();
-      const registerData = await loader.load("register");
-      document.querySelector(".register").innerHTML = registerData.html;
-      document.getElementById("login-page").classList.remove("visible");
-      document.getElementById("register-page").classList.add("visible");
-    });
-
-    document.getElementById("to-login").addEventListener("click", async (event) => {
-      event.preventDefault();
-      const loginData = await loader.load("login");
-      document.querySelector(".register").innerHTML = loginData.html;
-      document.getElementById("register-page").classList.remove("visible");
-      document.getElementById("login-page").classList.add("visible");
-    });
+    addSwitchEventListeners();
+    addLoginEventListener();
   } catch (e) {
     console.error("Failed to load data:", e);
   }
 });
+
+function addSwitchEventListeners() {
+  document.getElementById("to-register").addEventListener("click", async (event) => {
+    event.preventDefault();
+    const registerData = await loader.load("register");
+    document.querySelector(".register").innerHTML = registerData.html;
+    document.getElementById("login-page").classList.remove("visible");
+    document.getElementById("register-page").classList.add("visible");
+    addSwitchEventListeners();
+    addRegisterEventListener();
+  });
+
+  document.getElementById("to-login").addEventListener("click", async (event) => {
+    event.preventDefault();
+    const loginData = await loader.load("login");
+    document.querySelector(".register").innerHTML = loginData.html;
+    document.getElementById("register-page").classList.remove("visible");
+    document.getElementById("login-page").classList.add("visible");
+    addSwitchEventListeners();
+    addLoginEventListener();
+  });
+}
+
+function addLoginEventListener() {
+  document.getElementById("login-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
+
+    const response = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (response.ok) {
+      alert("Login successful");
+      showLogoutButton();
+    } else {
+      alert("Login failed");
+    }
+  });
+}
+
+function addRegisterEventListener() {
+  document.getElementById("register-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const username = document.getElementById("register-username").value;
+    const password = document.getElementById("register-password").value;
+
+    const response = await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (response.ok) {
+      alert("Registration successful");
+      const loginData = await loader.load("login");
+      document.querySelector(".register").innerHTML = loginData.html;
+      document.getElementById("register-page").classList.remove("visible");
+      document.getElementById("login-page").classList.add("visible");
+      addSwitchEventListeners();
+      addLoginEventListener();
+    } else {
+      alert("Registration failed");
+    }
+  });
+}
+
+function showLogoutButton() {
+  const logoutButton = document.querySelector(".logout");
+  logoutButton.classList.remove("hidden");
+  logoutButton.addEventListener("click", () => {
+    alert("Logged out");
+    location.reload();
+  });
+}
 
 document.querySelectorAll("button").forEach((button) => {
   button.onclick = async () => {
