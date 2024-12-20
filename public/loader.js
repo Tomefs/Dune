@@ -133,10 +133,23 @@ document.querySelectorAll("button").forEach((button) => {
       const data = await loader.load(key);
       console.log(`Data loaded: ${JSON.stringify(data)}`);
       loadContent(key, data);
+      history.pushState({ key }, data.title, ""); 
     } catch (e) {
       console.error("Failed to load data:", e);
     }
   };
+});
+
+window.addEventListener("popstate", async (event) => {
+  if (event.state && event.state.key) {
+    try {
+      const data = await loader.load(event.state.key);
+      console.log(`Data loaded from history: ${JSON.stringify(data)}`);
+      loadContent(event.state.key, data);
+    } catch (e) {
+      console.error("Failed to load data from history:", e);
+    }
+  }
 });
 
 function loadContent(key, data) {
