@@ -57,15 +57,15 @@ function loadContent(key, data) {
     return;
   }
 
-  if (key === "books") {
+  if (key === "books" || key === "movies") {
     const imageContainer = document.createElement("div");
     imageContainer.className = "image-container";
 
-    data.image.forEach((book) => {
-      const { title, src, sinopse } = book;
+    data.image.forEach((item) => {
+      const { title, src, sinopse } = item;
 
-      const bookContainer = document.createElement("div");
-      bookContainer.className = "book-container";
+      const itemContainer = document.createElement("div");
+      itemContainer.className = "item-container";
 
       const titleElement = document.createElement("h1");
       titleElement.textContent = title;
@@ -75,13 +75,13 @@ function loadContent(key, data) {
       imageElement.alt = title;
 
       imageElement.addEventListener("click", () => {
-        displayBookInfo(title, sinopse, contentContainer);
+        displayItemInfo(title, sinopse, contentContainer);
       });
 
-      bookContainer.appendChild(titleElement);
-      bookContainer.appendChild(imageElement);
+      itemContainer.appendChild(titleElement);
+      itemContainer.appendChild(imageElement);
 
-      imageContainer.appendChild(bookContainer);
+      imageContainer.appendChild(itemContainer);
     });
     contentContainer.appendChild(imageContainer);
   } else {
@@ -112,22 +112,22 @@ function loadContent(key, data) {
   }
 }
 
-function displayBookInfo(title, sinopse, container) {
-  let bookInfoContainer = container.querySelector(".book-info");
-  if (!bookInfoContainer) {
-    bookInfoContainer = document.createElement("div");
-    bookInfoContainer.className = "book-info";
-    container.appendChild(bookInfoContainer);
+function displayItemInfo(title, sinopse, container) {
+  let itemInfoContainer = container.querySelector(".item-info");
+  if (!itemInfoContainer) {
+    itemInfoContainer = document.createElement("div");
+    itemInfoContainer.className = "item-info";
+    container.appendChild(itemInfoContainer);
   }
 
-  bookInfoContainer.innerHTML = "";
+  itemInfoContainer.innerHTML = "";
 
-  const titleElement = document.createElement("h2");
+  const titleElement = document.createElement("h1");
   titleElement.textContent = title;
 
   const sinopseElement = document.createElement("p");
   sinopseElement.textContent = sinopse.join(" ");
 
-  bookInfoContainer.appendChild(titleElement);
-  bookInfoContainer.appendChild(sinopseElement);
+  itemInfoContainer.appendChild(titleElement);
+  itemInfoContainer.appendChild(sinopseElement);
 }
