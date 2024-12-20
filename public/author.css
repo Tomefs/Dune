@@ -1,28 +1,35 @@
+.Author{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
 .Author h1{
     font-family: anybodyEB;
-    padding: 1rem;
+    height: 10%;
+    padding: 4rem 0 0 8rem;
     font-size: 2rem;
     text-transform: uppercase;
 }
 .Author p{
-    font-family: "Bai Jamjuree", serif;
     width: 50%;
-    margin-top: 10rem;
+    height: 40%;
+    padding: 1rem 8rem 0 8rem;
+    bottom: 0;
+    left: 0;
 }
 
-.Author{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.Author .image-container{
+    position: fixed;
+    width: auto;
+    height: 100%;
+    right: 0;
+    top: 0;
 }
 
-.Author .author-image{
-    width: 50%;
-    overflow: hidden;
-}
-
-.Author .author-image img{
+.Author .image-container img{
     width: 100%;
-    height: auto;
-    object-fit: cover; 
+    height: 100%;
 }
