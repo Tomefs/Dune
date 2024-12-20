@@ -44,7 +44,6 @@ Before running the app, make sure you have the following things installed:
 
 4. Start the Data Base
 > mongod --dbpath data --port 6001
-> node data.js
 
 5. Start the Server
 > node server.js
