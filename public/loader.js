@@ -25,45 +25,35 @@ class DataLoader {
       throw error;
     }
   }
-
-  async loadPage(page) {
-    try {
-      const response = await fetch(`${this.url}/${page}`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch: ${response.statusText}`);
-      }
-
-      const contentType = response.headers.get("Content-Type");
-      if (!contentType || !contentType.includes("text/html")) {
-        const text = await response.text();
-        console.error("Expected HTML, but got:", text);
-        throw new Error("Expected HTML, but got something else.");
-      }
-
-      const html = await response.text();
-      console.log(`Page received: ${html}`);
-      return html;
-    } catch (error) {
-      console.error("Error in DataLoader.loadPage:", error);
-      throw error;
-    }
-  }
 }
 
 let loader = new DataLoader("http://localhost:3002/getData");
 
-document.querySelectorAll("button").forEach((button) => {
-  button.onclick = async () => {
-    const page = button.className;
-    try {
-      console.log(`Loading page: ${page}`);
-      const html = await loader.loadPage(page);
-      console.log(`Page loaded: ${html}`);
-      document.querySelector("main").innerHTML = html;
-    } catch (e) {
-      console.error("Failed to load page:", e);
-    }
-  };
+document.querySelector(".account").addEventListener("click", async () => {
+  try {
+    const data = await loader.load("login");
+    document.querySelector(".register").innerHTML = data.html;
+    document.getElementById("login-page").classList.toggle("visible");
+    document.getElementById("register-page").classList.remove("visible");
+
+    document.getElementById("to-register").addEventListener("click", async (event) => {
+      event.preventDefault();
+      const registerData = await loader.load("register");
+      document.querySelector(".register").innerHTML = registerData.html;
+      document.getElementById("login-page").classList.remove("visible");
+      document.getElementById("register-page").classList.add("visible");
+    });
+
+    document.getElementById("to-login").addEventListener("click", async (event) => {
+      event.preventDefault();
+      const loginData = await loader.load("login");
+      document.querySelector(".register").innerHTML = loginData.html;
+      document.getElementById("register-page").classList.remove("visible");
+      document.getElementById("login-page").classList.add("visible");
+    });
+  } catch (e) {
+    console.error("Failed to load data:", e);
+  }
 });
 
 document.querySelectorAll("button").forEach((button) => {

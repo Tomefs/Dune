@@ -1,11 +1,10 @@
 .hidden {
-  display: none;
   background-image: none;
   background-color: #fff;
   margin-top: 0rem;
 }
 
-.registos {
+.register {
   color: rgb(0, 0, 0);;
   line-height: 1.6;
   display: flex;
@@ -16,7 +15,7 @@
 
 }
 
-.registos .image-container{
+.register .image-container{
   position: absolute;
   position: fixed;
   margin-left: 15rem;
@@ -24,13 +23,13 @@
   height: auto;
   z-index: -1;
 }
-.registos.image-container img{
+.register.image-container img{
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-.registos h2 {
+.register h2 {
   font-family: anybodyEB;
   font-weight: bold;
   margin-top: 10rem;
@@ -38,7 +37,7 @@
   color: rgba(0, 0, 0);
 }
   
-.registos form {
+.register form {
   font-family: anybodyM;
   background: rgba(255,255,255,0.8);
   padding: 40px;
@@ -51,7 +50,7 @@
 
 }
 
-.registos input {
+.register input {
   font-family: baiJamjuree;
   margin-bottom: 20px;;
   padding: 10px;
@@ -60,7 +59,7 @@
   font-size: 1rem;
 }
   
-.registos button {
+.register button {
   font-family: anybodyM;
   padding: 10px;
   background: none;
@@ -72,23 +71,23 @@
   justify-content: center;
 }
   
-.registos button:hover {
+.register button:hover {
   background: rgb(0, 0, 0);;
   color: rgb(255,255,255);
 }
   
-.registos p {
+.register p {
   text-align: center;
   margin-top: 10px;
   font-size: 0.9rem;
 }
   
-.registos p a {
+.register p a {
   font-family: anybodyEB;
   color: rgb(0, 0, 0);;
   text-decoration: none;
 }
   
-.registos p a:hover {
+.register p a:hover {
   text-decoration: underline;
 }
