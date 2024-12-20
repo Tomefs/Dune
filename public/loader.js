@@ -25,9 +25,46 @@ class DataLoader {
       throw error;
     }
   }
+
+  async loadPage(page) {
+    try {
+      const response = await fetch(`${this.url}/${page}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch: ${response.statusText}`);
+      }
+
+      const contentType = response.headers.get("Content-Type");
+      if (!contentType || !contentType.includes("text/html")) {
+        const text = await response.text();
+        console.error("Expected HTML, but got:", text);
+        throw new Error("Expected HTML, but got something else.");
+      }
+
+      const html = await response.text();
+      console.log(`Page received: ${html}`);
+      return html;
+    } catch (error) {
+      console.error("Error in DataLoader.loadPage:", error);
+      throw error;
+    }
+  }
 }
 
 let loader = new DataLoader("http://localhost:3002/getData");
+
+document.querySelectorAll("button").forEach((button) => {
+  button.onclick = async () => {
+    const page = button.className;
+    try {
+      console.log(`Loading page: ${page}`);
+      const html = await loader.loadPage(page);
+      console.log(`Page loaded: ${html}`);
+      document.querySelector("main").innerHTML = html;
+    } catch (e) {
+      console.error("Failed to load page:", e);
+    }
+  };
+});
 
 document.querySelectorAll("button").forEach((button) => {
   button.onclick = async () => {

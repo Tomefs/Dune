@@ -50,6 +50,42 @@ app.get("/getData/:key", async (message, response) => {
   }
 });
 
+app.post("/register", async (message, response) => {
+  const { username, password } = message.body;
+
+  const db = client.db("data");
+  const collection = db.collection("users");
+
+  const existingUser = await collection.findOne({ username });
+  if (existingUser) {
+    console.log("User already exists");
+  }
+
+  await collection.insertOne({ username, password });
+  response.status(201).send("User registered successfully");
+});
+
+app.post("/login", async (message, response) => {
+  const { username, password } = message.body;
+
+  const db = client.db("data");
+  const collection = db.collection("users");
+
+  const user = await collection.findOne({ username });
+  if (!user || user.password !== password) {
+    response.status(200).send("Invalid username or password");
+  }
+});
+
+app.get("/login", (message, response) => {
+  response.sendFile(path.join(frontendDir, "login.html"));
+});
+
+app.get("/register", (message, response) => {
+  response.sendFile(path.join(frontendDir, "register.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
